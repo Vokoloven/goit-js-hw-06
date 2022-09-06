@@ -36,19 +36,13 @@ refs.inputClassData.addEventListener('blur', inputQtySymbols);
 
 function inputQtySymbols(e) {
   const currentQtyInputedSymbols = e.currentTarget.value.length;
-  qtySymbolsForChecking === currentQtyInputedSymbols
-    ? validClass()
-    : invalidClass();
+  refs.inputClassData.classList.add('invalid');
+  if (qtySymbolsForChecking === currentQtyInputedSymbols) {
+    validClass();
+  }
 }
 
 function validClass() {
   refs.inputClassData.classList.add('valid');
   refs.inputClassData.classList.remove('invalid');
 }
-
-function invalidClass() {
-  refs.inputClassData.classList.add('invalid');
-  refs.inputClassData.classList.remove('valid');
-}
-
-console.log(refs.inputClassData.classList);
