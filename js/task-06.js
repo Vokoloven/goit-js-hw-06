@@ -25,18 +25,30 @@
 // }
 
 const refs = {
-  inputEl: document.querySelector('input#validation-input'),
+  inputClassData: document.querySelector('input#validation-input'),
 };
-const inputSymbolEl = Number(refs.inputEl.attributes[2].nodeValue);
 
-refs.inputEl.addEventListener('blur', blurEvent);
+const qtySymbolsForChecking = Number(
+  refs.inputClassData.getAttribute('data-length'),
+);
 
-function blurEvent(event) {
-  const eventLenghtSymbol = event.currentTarget.value.length;
-  console.log(eventLenghtSymbol);
-  console.log(inputSymbolEl);
+refs.inputClassData.addEventListener('blur', inputQtySymbols);
 
-  eventLenghtSymbol === inputSymbolEl
-    ? (refs.inputEl.style.borderColor = 'green')
-    : (refs.inputEl.style.borderColor = 'red');
+function inputQtySymbols(e) {
+  const currentQtyInputedSymbols = e.currentTarget.value.length;
+  qtySymbolsForChecking === currentQtyInputedSymbols
+    ? validClass()
+    : invalidClass();
 }
+
+function validClass() {
+  refs.inputClassData.classList.add('valid');
+  refs.inputClassData.classList.remove('invalid');
+}
+
+function invalidClass() {
+  refs.inputClassData.classList.add('invalid');
+  refs.inputClassData.classList.remove('valid');
+}
+
+console.log(refs.inputClassData.classList);
