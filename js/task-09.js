@@ -23,12 +23,11 @@ const refs = {
   btnColorClicker: document.querySelector('.change-color'),
   body: document.querySelector('body'),
 };
-let clickNumber = 0;
 
 refs.btnColorClicker.addEventListener('click', bodyClickChangeBgColour);
 
 function bodyClickChangeBgColour() {
-  clickNumber += 1;
-  refs.bgColorName.textContent = getRandomHexColor(clickNumber);
-  refs.body.style.backgroundColor = getRandomHexColor(clickNumber);
+  const color = getRandomHexColor();
+  refs.bgColorName.textContent = color;
+  refs.body.style.backgroundColor = color;
 }
