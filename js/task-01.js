@@ -15,21 +15,12 @@
 // Category: Technologies
 // Elements: 5
 
-const numOfCategories = document.querySelectorAll('li.item');
-const nameOfCategories = document.querySelectorAll('h2');
-const qtyOfElements = document.querySelectorAll('ul');
+const list = document.querySelector('ul#categories');
+const items = document.querySelectorAll('li.item');
 
-console.log(`Number of categories: ${numOfCategories.length}`);
-console.log(`Category: ${nameOfCategories[0].textContent}`);
-console.log(`Elements: ${qtyOfElements[1].children.length}`);
-console.log(`Category: ${nameOfCategories[1].textContent}`);
-console.log(`Elements: ${qtyOfElements[2].children.length}`);
-console.log(`Category: ${nameOfCategories[2].textContent}`);
-console.log(`Elements: ${qtyOfElements[3].children.length}`);
+console.log(`Number of categories: ${list.children.length}`);
 
-// for (let i = 0; i < nameOfCategories.length; i += 1) {
-//   console.log(`Category: ${nameOfCategories[i].textContent}`);
-// }
-// for (let i = 1; i < qtyOfElements.length; i += 1) {
-//   console.log(`Elements: ${qtyOfElements[i].children.length}`);
-// }
+for (let i = 0; i < items.length; i += 1) {
+  console.log(`Category: ${items[i].firstElementChild.textContent}`);
+  console.log(`Elements: ${items[i].lastElementChild.children.length}`);
+}
