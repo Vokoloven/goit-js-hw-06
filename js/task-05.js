@@ -9,10 +9,12 @@ const refs = {
   outputText: document.querySelector('span#name-output'),
 };
 
-refs.inputText.addEventListener('input', onInputChange);
+refs.inputText.addEventListener('input', onFillSpan);
 
-function onInputChange(inputEvent) {
-  if (!inputEvent) {
-  }
-  refs.outputText.textContent = inputEvent.currentTarget.value;
+function onFillSpan(e) {
+  const currentValue = e.currentTarget.value;
+
+  currentValue === ''
+    ? (refs.outputText.textContent = 'Anonymous')
+    : (refs.outputText.textContent = currentValue);
 }
