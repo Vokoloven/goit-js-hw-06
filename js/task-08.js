@@ -27,24 +27,26 @@ function onFormSubmit(event) {
   event.preventDefault();
 
   const userData = event.currentTarget.elements;
-  const fieldMailTitle = userData[0].attributes.name.value;
-  const fieldPassTitle = userData[1].attributes.name.value;
+  const { email, password } = userData;
 
-  const userMail = userData.email.value;
-  const userPass = userData.password.value;
+  const entUserMail = email.value.trim();
+  const entUserPass = password.value.trim();
+  const propNameMail = email.name;
+  const propNamePass = password.name;
 
   const userInfo = {};
 
-  if (!userData.email.value) {
+  if (!entUserMail) {
     alert('Please fill all necessary fields');
-  } else if (!userData.password.value) {
+  } else if (!entUserPass) {
     alert('Please fill all necessary fields');
   } else {
-    userInfo[fieldMailTitle] = userMail;
-    userInfo[fieldPassTitle] = userPass;
+    userInfo[propNameMail] = entUserMail;
+    userInfo[propNamePass] = entUserPass;
     form.reset();
-    console.log(userInfo);
   }
+
+  console.log(userInfo);
 
   // const formData = new FormData(event.currentTarget);
   // formData.forEach((value, name) => {
